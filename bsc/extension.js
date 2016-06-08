@@ -55,7 +55,7 @@
                             var name = msg.substring(space + 2);
                             var user = basicBot.userUtilities.lookupUserName(name);
                             if (user === false || !user.inRoom) {
-                                return API.sendChat(subChat('Usuário não está no quarto', {name: name}));
+                                return API.sendChat(subChat(basicbot.chat.nousercastigo, {name: name}));
                             }
                             else if (user.username === chat.un) {
                                 return API.sendChat(subChat(basicBot.chat.selfcastigo, {name: name}));
