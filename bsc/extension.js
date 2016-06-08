@@ -48,7 +48,7 @@
     localStorage.setItem("basicBotsettings", JSON.stringify({
       botName: "AlternativeBOT",
       language: "Portuguese",
-      chatLink: "https://rawgit.com/NoobAprend1z/AlternativeBOT/master/pt-BR.json",
+      chatLink: "https://rawgit.com/Shuwray/AlternativeBOT/master/bsc/lang/pt-br.json",
       scriptLink: "https://rawgit.com/basicBot/source/master/basicBot.js",
       roomLock: false, // Requires an extension to re-load the script
       startupCap: 50, // 1-200
@@ -78,13 +78,13 @@
       usercommandsEnabled: true,
       skipPosition: 1,
       skipReasons: [
-      ["theme", "Essa música não corresponde ao tema do quarto. "],
-      ["op", "Esta música está na lista de OP. "],
-      ["history", "Música no histórico. "],
-      ["mix", "Você jogou um mix, que é contra as regras. "],
-      ["sound", "A música tem um péssima qualidade sonora, ou está sem som. "],
-      ["nsfw", "A música contem NSFW (imagens/som). "],
-      ["unavailable", "Música indisponível para alguns usuários. "]
+      ["theme", "Essa mÃºsica nÃ£o corresponde ao tema do quarto. "],
+      ["op", "Esta mÃºsica estÃ¡ na lista de OP. "],
+      ["history", "MÃºsica no histÃ³rico. "],
+      ["mix", "VocÃª jogou um mix, que Ã© contra as regras. "],
+      ["sound", "A mÃºsica tem um pÃ©ssima qualidade sonora, ou estÃ¡ sem som. "],
+      ["nsfw", "A mÃºsica contem NSFW (imagens/som). "],
+      ["unavailable", "MÃºsica indisponÃ­vel para alguns usuÃ¡rios. "]
       ],
       afkpositionCheck: 15,
       afkRankCheck: "ambassador",
