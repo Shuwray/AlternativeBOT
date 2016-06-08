@@ -23,6 +23,50 @@
         for (var i = 0; i < spamWords.length; i++) {
           window.bot.chatUtilities.spam.push(spamWords[i]);
         }
+        
+        
+            castigoCommand: {
+                command: '"castigar',
+                rank: 'user',
+                type: 'startsWith',
+                castigos: ['Te deu uma voadora',
+                'Te deu uma rasteira',
+                'Te de um pedala robinho',
+                'Te deu uma dedada fatal',
+                'Comeu sua irmã',
+                'Disse que seu pai é um traveco',
+                ],
+                getCastigos: function () {
+                    var c = Math.floor(Math.random() * this.castigos.length);
+                    return this.Castigos[c];
+                },
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var msg = chat.message;
+
+                        var space = msg.indexOf(' ');
+                        if (space === -1) {
+                            API.sendChat('Mencione um usuário');
+                            return false;
+                        }
+                        else {
+                            var name = msg.substring(space + 2);
+                            var user = basicBot.userUtilities.lookupUserName(name);
+                            if (user === false || !user.inRoom) {
+                                return API.sendChat(subChat('Usuário não está no quarto', {name: name}));
+                            }
+                            else if (user.username === chat.un) {
+                                return API.sendChat(subChat(basicBot.chat.selfcastigo, {name: name}));
+                            }
+                            else {
+                                return API.sendChat(subChat(basicBot.chat.castigo, {nameto: user.username, namefrom: chat.un, cookie: this.getCastigos()}));
+                            }
+                        }
+                    }
+                }
+            },
 
         // Example code for a bot command:
         bot.commands.baconCommand = {
@@ -78,13 +122,13 @@
       usercommandsEnabled: true,
       skipPosition: 1,
       skipReasons: [
-      ["theme", "Essa música não corresponde ao tema do quarto. "],
+      ["tema", "Essa música não corresponde ao tema do quarto. "],
       ["op", "Esta música está na lista de OP. "],
-      ["history", "Música no histórico. "],
+      ["histórico", "Música no histórico. "],
       ["mix", "Você jogou um mix, que é contra as regras. "],
-      ["sound", "A música tem um péssima qualidade sonora, ou está sem som. "],
+      ["música", "A música tem um péssima qualidade sonora, ou está sem som. "],
       ["nsfw", "A música contem NSFW (imagens/som). "],
-      ["unavailable", "Música indisponível para alguns usuários. "]
+      ["indísponivel", "Música indisponível para alguns usuários. "]
       ],
       afkpositionCheck: 15,
       afkRankCheck: "ambassador",
