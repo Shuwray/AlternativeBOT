@@ -23,51 +23,6 @@
         for (var i = 0; i < spamWords.length; i++) {
           window.bot.chatUtilities.spam.push(spamWords[i]);
         }
-        
-        
-            castigoCommand: {
-                command: '"castigar',
-                rank: 'user',
-                type: 'startsWith',
-                castigos: ['Te deu uma voadora',
-                'Te deu uma rasteira',
-                'Te de um pedala robinho',
-                'Te deu uma dedada fatal',
-                'Comeu sua irmã',
-                'Disse que seu pai é um traveco',
-                ],
-                getCastigos: function () {
-                    var c = Math.floor(Math.random() * this.castigos.length);
-                    return this.Castigos[c];
-                },
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        var msg = chat.message;
-
-                        var space = msg.indexOf(' ');
-                        if (space === -1) {
-                            API.sendChat('Mencione um usuário');
-                            return false;
-                        }
-                        else {
-                            var name = msg.substring(space + 2);
-                            var user = basicBot.userUtilities.lookupUserName(name);
-                            if (user === false || !user.inRoom) {
-                                return API.sendChat(subChat(basicbot.chat.nousercastigo, {name: name}));
-                            }
-                            else if (user.username === chat.un) {
-                                return API.sendChat(subChat(basicBot.chat.selfcastigo, {name: name}));
-                            }
-                            else {
-                                return API.sendChat(subChat(basicBot.chat.castigo, {nameto: user.username, namefrom: chat.un, cookie: this.getCastigos()}));
-                            }
-                        }
-                    }
-                }
-            },
-
         // Example code for a bot command:
         bot.commands.baconCommand = {
           command: 'bacon',  // The command to be called. With the standard command literal this would be: !bacon
@@ -91,8 +46,8 @@
 
     localStorage.setItem("basicBotsettings", JSON.stringify({
       botName: "AlternativeBOT",
-      language: "Portuguese",
-      chatLink: "https://rawgit.com/Shuwray/AlternativeBOT/master/bsc/lang/pt-br.json",
+      language: "portuguese",
+      chatLink: "https://raw.githubusercontent.com/Shuwray/AlternativeBOT/master/bsc/lang/pt-br.json",
       scriptLink: "https://rawgit.com/basicBot/source/master/basicBot.js",
       roomLock: false, // Requires an extension to re-load the script
       startupCap: 50, // 1-200
